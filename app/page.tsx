@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10" />
+        <div className="absolute inset-0 bg-purple-500/5" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <Badge className="mb-4" variant="secondary">
@@ -17,7 +17,7 @@ export default function HomePage() {
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Learn Solana Development,{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-purple-400">
                 Earn On-Chain Credentials
               </span>
             </h1>
@@ -222,7 +222,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10">
+      <section className="py-20 bg-purple-500/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">

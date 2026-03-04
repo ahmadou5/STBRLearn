@@ -13,12 +13,13 @@ The ultimate learning platform for Solana-native developers. Interactive courses
 
 ## 📋 Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 15 (App Router with Turbopack)
 - **Language**: TypeScript (strict mode)
-- **Styling**: Tailwind CSS 4
-- **Blockchain**: Solana (Devnet), Wallet Adapter, Metaplex
-- **UI Components**: Radix UI + Custom Components
-- **Analytics**: Ready for GA4, Sentry integration
+- **Styling**: Tailwind CSS 3
+- **Blockchain**: Solana Web3.js, Wallet Adapter (Phantom, Solflare)
+- **UI Components**: Radix UI + shadcn/ui Components
+- **Code Editor**: Solana Playground (embedded iframe)
+- **Analytics**: Google Analytics 4 ready, Sentry integration ready
 
 ## 🛠️ Local Development
 
@@ -46,16 +47,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Environment Variables
 
-Create a `.env.local` file:
+Create a `.env.local` file (see `.env.example` for template):
 
 ```env
 # Solana Configuration
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
-NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+NEXT_PUBLIC_SOLANA_RPC_HOST=https://api.devnet.solana.com
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME=Superteam Academy
 
 # Analytics (Optional)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=
-SENTRY_DSN=
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_SENTRY_DSN=https://xxxxx@sentry.io/xxxxx
 ```
 
 ## 📁 Project Structure
@@ -86,9 +89,10 @@ app/
 2. **Course Catalog** (`/courses`) - Filterable course grid
 3. **Course Detail** (`/courses/[slug]`) - Module/lesson breakdown
 4. **Lesson Viewer** (`/courses/[slug]/lessons/[id]`) - Content + code editor
-5. **Dashboard** (`/dashboard`) - Progress, XP, achievements
+5. **Dashboard** (`/dashboard`) - Progress, XP, achievements, streaks
 6. **Leaderboard** (`/leaderboard`) - Global rankings by XP
 7. **Profile** (`/profile`) - User stats, credentials, achievements
+8. **Settings** (`/settings`) - Profile, wallet, notifications, preferences
 
 ## 🎮 Gamification System
 
@@ -133,7 +137,13 @@ Currently uses mock implementation - swap for on-chain calls when ready.
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for comprehensive deployment guide.
+
+### Quick Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/solanabr/superteam-academy)
+
+Or manually:
 
 ```bash
 # Install Vercel CLI
@@ -143,13 +153,14 @@ npm i -g vercel
 vercel --prod
 ```
 
-Or connect your GitHub repo to Vercel for automatic deployments.
-
-### Environment Variables
+### Required Environment Variables
 
 Add these in Vercel dashboard:
 - `NEXT_PUBLIC_SOLANA_NETWORK=devnet`
-- `NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com`
+- `NEXT_PUBLIC_SOLANA_RPC_HOST=https://api.devnet.solana.com`
+- `NEXT_PUBLIC_APP_URL=https://your-app.vercel.app`
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for premium RPC providers (Helius, QuickNode, Alchemy).
 
 ## 📊 Performance Targets
 
@@ -181,9 +192,18 @@ This is an open-source project. Contributions are welcome!
 
 MIT License - See [LICENSE](LICENSE) file
 
+## 📚 Documentation
+
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System design, patterns, and technical decisions
+- **[CUSTOMIZATION.md](./CUSTOMIZATION.md)** - How to customize for your own learning platform
+- **[CMS_GUIDE.md](./CMS_GUIDE.md)** - Content management workflow and best practices
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment guide
+- **[TODO_PROGRESS.md](./TODO_PROGRESS.md)** - Development progress tracker
+
 ## 🔗 Links
 
-- **Live Demo**: [TBD]
+- **Live Demo**: [TBD - Deploy and add URL here]
+- **Demo Video**: [TBD - Add Loom/YouTube link]
 - **GitHub**: https://github.com/solanabr/superteam-academy
 - **Twitter**: [@SuperteamBR](https://twitter.com/SuperteamBR)
 - **Discord**: [discord.gg/superteambrasil](https://discord.gg/superteambrasil)

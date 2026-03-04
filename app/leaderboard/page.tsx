@@ -26,7 +26,7 @@ export default function LeaderboardPage() {
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-8 text-center">
-        <div className="inline-block p-3 rounded-full bg-gradient-to-br from-yellow-500/20 to-orange-500/20 mb-4">
+        <div className="inline-block p-3 rounded-full bg-yellow-500/20 mb-4">
           <Trophy className="h-12 w-12 text-yellow-500" />
         </div>
         <h1 className="text-4xl font-bold mb-4">Leaderboard</h1>
@@ -61,7 +61,7 @@ export default function LeaderboardPage() {
       <div className="grid md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
         {/* 2nd Place */}
         <div className="md:order-1 order-2">
-          <Card className="border-2 border-gray-400/50 bg-gradient-to-br from-gray-400/10 to-gray-500/10">
+          <Card className="border-2 border-gray-400/50 bg-gray-400/10">
             <CardHeader className="text-center pb-4">
               <div className="text-6xl mb-2">🥈</div>
               <div className="text-2xl font-bold">#2</div>
@@ -79,7 +79,7 @@ export default function LeaderboardPage() {
 
         {/* 1st Place */}
         <div className="md:order-2 order-1">
-          <Card className="border-2 border-yellow-500/50 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 scale-105">
+          <Card className="border-2 border-yellow-500/50 bg-yellow-500/10 scale-105">
             <CardHeader className="text-center pb-4">
               <div className="text-7xl mb-2">🥇</div>
               <div className="text-3xl font-bold">#1</div>
@@ -97,7 +97,7 @@ export default function LeaderboardPage() {
 
         {/* 3rd Place */}
         <div className="md:order-3 order-3">
-          <Card className="border-2 border-orange-600/50 bg-gradient-to-br from-orange-600/10 to-orange-700/10">
+          <Card className="border-2 border-orange-600/50 bg-orange-600/10">
             <CardHeader className="text-center pb-4">
               <div className="text-6xl mb-2">🥉</div>
               <div className="text-2xl font-bold">#3</div>

@@ -40,7 +40,7 @@ export default function ProfilePage() {
         <CardContent className="pt-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Avatar */}
-            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-4xl flex-shrink-0">
+            <div className="h-24 w-24 rounded-full bg-purple-600 flex items-center justify-center text-4xl flex-shrink-0">
               🎯
             </div>
 
@@ -188,7 +188,7 @@ export default function ProfilePage() {
                     key={achievement.id}
                     className={`aspect-square rounded-lg border-2 flex flex-col items-center justify-center p-2 ${
                       achievement.unlockedAt
-                        ? "bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500/50"
+                        ? "bg-purple-500/20 border-purple-500/50"
                         : "bg-muted/20 border-muted grayscale opacity-50"
                     }`}
                     title={achievement.description}

@@ -18,7 +18,7 @@ export default function DashboardPage() {
     return (
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-md mx-auto text-center space-y-6">
-          <div className="h-20 w-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mx-auto flex items-center justify-center">
+          <div className="h-20 w-20 rounded-full bg-purple-600 mx-auto flex items-center justify-center">
             <Trophy className="h-10 w-10 text-white" />
           </div>
           <h1 className="text-3xl font-bold">Connect Your Wallet</h1>
@@ -192,7 +192,7 @@ export default function DashboardPage() {
                     key={achievement.id}
                     className={`aspect-square rounded-lg border-2 flex items-center justify-center text-3xl ${
                       achievement.unlockedAt
-                        ? "bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500/50"
+                        ? "bg-purple-500/20 border-purple-500/50"
                         : "bg-muted/20 border-muted grayscale opacity-50"
                     }`}
                     title={achievement.name}

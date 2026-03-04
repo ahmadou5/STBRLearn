@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500" />
+              <div className="h-8 w-8 rounded-lg bg-purple-600" />
               <span className="text-lg font-bold">Superteam Academy</span>
             </div>
             <p className="text-sm text-muted-foreground">
