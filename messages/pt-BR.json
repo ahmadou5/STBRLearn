@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "Superteam Academy",
+    "tagline": "Aprenda Desenvolvimento Solana",
+    "connectWallet": "Conectar Carteira",
+    "disconnect": "Desconectar",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso"
+  },
+  "navigation": {
+    "home": "Início",
+    "courses": "Cursos",
+    "dashboard": "Painel",
+    "leaderboard": "Classificação",
+    "profile": "Perfil",
+    "settings": "Configurações"
+  },
+  "home": {
+    "hero": {
+      "title": "Aprenda Desenvolvimento Solana,",
+      "titleHighlight": "Ganhe Credenciais On-Chain",
+      "subtitle": "A plataforma definitiva de aprendizado para desenvolvedores Solana. Cursos interativos, gamificação e credenciais verificáveis on-chain.",
+      "cta": "Começar a Aprender",
+      "viewCourses": "Ver Cursos"
+    },
+    "features": {
+      "title": "Por que Superteam Academy?",
+      "subtitle": "Tudo que você precisa para se tornar um desenvolvedor Solana",
+      "interactiveTitle": "Aprendizado Interativo",
+      "interactiveDesc": "Aprenda fazendo com desafios práticos de codificação e programas Solana reais",
+      "gamificationTitle": "Gamificação",
+      "gamificationDesc": "Ganhe XP, desbloqueie conquistas e compita na classificação",
+      "credentialsTitle": "Credenciais On-Chain",
+      "credentialsDesc": "Certificados NFT verificáveis armazenados na blockchain Solana",
+      "communityTitle": "Impulsionado pela Comunidade",
+      "communityDesc": "Aprenda com outros desenvolvedores e obtenha suporte da comunidade Superteam"
+    }
+  },
+  "courses": {
+    "title": "Explorar Cursos",
+    "subtitle": "Escolha seu caminho de aprendizado",
+    "difficulty": {
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário",
+      "advanced": "Avançado"
+    },
+    "track": {
+      "development": "Desenvolvimento",
+      "defi": "DeFi",
+      "nfts": "NFTs",
+      "security": "Segurança"
+    },
+    "duration": "{minutes} minutos",
+    "lessons": "{count} lições",
+    "xp": "{amount} XP",
+    "progress": "Progresso",
+    "enrolled": "Continuar Aprendendo",
+    "notEnrolled": "Ver Curso",
+    "startCourse": "Iniciar Curso",
+    "enroll": "Inscrever-se Agora"
+  },
+  "dashboard": {
+    "title": "Painel",
+    "welcomeBack": "Bem-vindo de volta!",
+    "stats": {
+      "totalXp": "XP Total",
+      "level": "Nível",
+      "coursesCompleted": "Cursos Concluídos",
+      "currentStreak": "Sequência Atual",
+      "days": "dias"
+    },
+    "achievements": {
+      "title": "Conquistas",
+      "viewAll": "Ver Todas",
+      "unlocked": "Desbloqueado",
+      "locked": "Bloqueado"
+    },
+    "continuelearning": "Continuar Aprendendo",
+    "streakCalendar": "Calendário de Sequência"
+  },
+  "leaderboard": {
+    "title": "Classificação",
+    "subtitle": "Melhores alunos este mês",
+    "rank": "Posição",
+    "username": "Nome de usuário",
+    "level": "Nível",
+    "xp": "XP",
+    "streak": "Sequência",
+    "you": "Você"
+  },
+  "profile": {
+    "title": "Perfil",
+    "stats": {
+      "joinedDate": "Entrou em",
+      "coursesCompleted": "Cursos Concluídos",
+      "totalXp": "XP Total",
+      "currentStreak": "Sequência Atual"
+    },
+    "credentials": "Credenciais",
+    "achievements": "Conquistas",
+    "completedCourses": "Cursos Concluídos"
+  },
+  "settings": {
+    "title": "Configurações",
+    "subtitle": "Gerencie suas preferências de conta",
+    "profile": {
+      "title": "Configurações de Perfil",
+      "displayName": "Nome de Exibição",
+      "bio": "Bio",
+      "visibility": "Visibilidade do Perfil",
+      "visibilityPublic": "Público - Visível para todos",
+      "visibilityPrivate": "Privado - Visível apenas para você",
+      "visibilityCommunity": "Comunidade - Visível para membros Superteam",
+      "save": "Salvar Alterações"
+    },
+    "wallet": {
+      "title": "Carteira e Blockchain",
+      "connectedWallet": "Carteira Conectada",
+      "network": "Rede",
+      "autoSign": "Assinar automaticamente transações para recompensas XP"
+    },
+    "notifications": {
+      "title": "Notificações",
+      "courseUpdates": "Atualizações de Curso",
+      "courseUpdatesDesc": "Novas lições e lançamentos de conteúdo",
+      "achievements": "Desbloqueio de Conquistas",
+      "achievementsDesc": "Quando você ganha novos emblemas",
+      "leaderboard": "Mudanças na Classificação",
+      "leaderboardDesc": "Atualizações de posição e competições",
+      "weeklySummary": "Resumo Semanal",
+      "weeklySummaryDesc": "Seu resumo de progresso toda semana"
+    },
+    "appearance": {
+      "title": "Aparência",
+      "theme": "Tema",
+      "themeDark": "Escuro (Padrão)",
+      "themeLight": "Claro",
+      "themeSystem": "Sistema",
+      "reduceMotion": "Reduzir animações"
+    },
+    "language": {
+      "title": "Idioma e Região",
+      "language": "Idioma",
+      "timezone": "Fuso Horário"
+    }
+  },
+  "lesson": {
+    "markComplete": "Marcar como Concluído",
+    "nextLesson": "Próxima Lição",
+    "previousLesson": "Lição Anterior",
+    "backToCourse": "Voltar ao Curso",
+    "challenge": {
+      "title": "Desafio",
+      "instructions": "Instruções",
+      "hints": "Dicas",
+      "showHints": "Mostrar Dicas",
+      "hideHints": "Ocultar Dicas",
+      "solution": "Solução",
+      "showSolution": "Mostrar Solução",
+      "hideSolution": "Ocultar Solução",
+      "runTests": "Executar Testes",
+      "submit": "Enviar Solução"
+    }
+  },
+  "errors": {
+    "notFound": "Página Não Encontrada",
+    "notFoundDesc": "Ops! Parece que você entrou em território desconhecido.",
+    "backHome": "Voltar ao Início",
+    "browseCourses": "Navegar Cursos",
+    "walletRequired": "Conexão de carteira necessária",
+    "walletRequiredDesc": "Por favor, conecte sua carteira Solana para continuar",
+    "enrollmentFailed": "Falha na inscrição",
+    "lessonCompletionFailed": "Falha ao concluir lição"
+  }
+}

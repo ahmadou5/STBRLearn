@@ -19,6 +19,18 @@ export const metadata: Metadata = {
   title: "Superteam Academy - Learn Solana Development",
   description:
     "The ultimate learning platform for Solana-native developers. Interactive courses, gamification, and on-chain credentials.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  openGraph: {
+    title: "Superteam Academy - Learn Solana Development",
+    description: "The ultimate learning platform for Solana-native developers.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Superteam Academy",
+    description: "Learn Solana Development with interactive courses and on-chain credentials.",
+  },
 };
 
 export default function RootLayout({

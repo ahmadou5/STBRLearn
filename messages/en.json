@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "Superteam Academy",
+    "tagline": "Learn Solana Development",
+    "connectWallet": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "navigation": {
+    "home": "Home",
+    "courses": "Courses",
+    "dashboard": "Dashboard",
+    "leaderboard": "Leaderboard",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "home": {
+    "hero": {
+      "title": "Learn Solana Development,",
+      "titleHighlight": "Earn On-Chain Credentials",
+      "subtitle": "The ultimate learning platform for Solana-native developers. Interactive courses, gamification, and verifiable on-chain credentials.",
+      "cta": "Start Learning",
+      "viewCourses": "View Courses"
+    },
+    "features": {
+      "title": "Why Superteam Academy?",
+      "subtitle": "Everything you need to become a Solana developer",
+      "interactiveTitle": "Interactive Learning",
+      "interactiveDesc": "Learn by doing with hands-on coding challenges and real Solana programs",
+      "gamificationTitle": "Gamification",
+      "gamificationDesc": "Earn XP, unlock achievements, and compete on the leaderboard",
+      "credentialsTitle": "On-Chain Credentials",
+      "credentialsDesc": "Verifiable NFT certificates stored on Solana blockchain",
+      "communityTitle": "Community Driven",
+      "communityDesc": "Learn with other developers and get support from the Superteam community"
+    }
+  },
+  "courses": {
+    "title": "Explore Courses",
+    "subtitle": "Choose your learning path",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "track": {
+      "development": "Development",
+      "defi": "DeFi",
+      "nfts": "NFTs",
+      "security": "Security"
+    },
+    "duration": "{minutes} minutes",
+    "lessons": "{count} lessons",
+    "xp": "{amount} XP",
+    "progress": "Progress",
+    "enrolled": "Continue Learning",
+    "notEnrolled": "View Course",
+    "startCourse": "Start Course",
+    "enroll": "Enroll Now"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeBack": "Welcome back!",
+    "stats": {
+      "totalXp": "Total XP",
+      "level": "Level",
+      "coursesCompleted": "Courses Completed",
+      "currentStreak": "Current Streak",
+      "days": "days"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "viewAll": "View All",
+      "unlocked": "Unlocked",
+      "locked": "Locked"
+    },
+    "continuelearning": "Continue Learning",
+    "streakCalendar": "Streak Calendar"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Top learners this month",
+    "rank": "Rank",
+    "username": "Username",
+    "level": "Level",
+    "xp": "XP",
+    "streak": "Streak",
+    "you": "You"
+  },
+  "profile": {
+    "title": "Profile",
+    "stats": {
+      "joinedDate": "Joined",
+      "coursesCompleted": "Courses Completed",
+      "totalXp": "Total XP",
+      "currentStreak": "Current Streak"
+    },
+    "credentials": "Credentials",
+    "achievements": "Achievements",
+    "completedCourses": "Completed Courses"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account preferences",
+    "profile": {
+      "title": "Profile Settings",
+      "displayName": "Display Name",
+      "bio": "Bio",
+      "visibility": "Profile Visibility",
+      "visibilityPublic": "Public - Visible to everyone",
+      "visibilityPrivate": "Private - Only visible to you",
+      "visibilityCommunity": "Community - Visible to Superteam members",
+      "save": "Save Changes"
+    },
+    "wallet": {
+      "title": "Wallet & Blockchain",
+      "connectedWallet": "Connected Wallet",
+      "network": "Network",
+      "autoSign": "Auto-sign transactions for XP rewards"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "courseUpdates": "Course Updates",
+      "courseUpdatesDesc": "New lessons and content releases",
+      "achievements": "Achievement Unlocks",
+      "achievementsDesc": "When you earn new badges",
+      "leaderboard": "Leaderboard Changes",
+      "leaderboardDesc": "Rank updates and competitions",
+      "weeklySummary": "Weekly Summary",
+      "weeklySummaryDesc": "Your progress recap every week"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "theme": "Theme",
+      "themeDark": "Dark (Default)",
+      "themeLight": "Light",
+      "themeSystem": "System",
+      "reduceMotion": "Reduce animations"
+    },
+    "language": {
+      "title": "Language & Region",
+      "language": "Language",
+      "timezone": "Timezone"
+    }
+  },
+  "lesson": {
+    "markComplete": "Mark as Complete",
+    "nextLesson": "Next Lesson",
+    "previousLesson": "Previous Lesson",
+    "backToCourse": "Back to Course",
+    "challenge": {
+      "title": "Challenge",
+      "instructions": "Instructions",
+      "hints": "Hints",
+      "showHints": "Show Hints",
+      "hideHints": "Hide Hints",
+      "solution": "Solution",
+      "showSolution": "Show Solution",
+      "hideSolution": "Hide Solution",
+      "runTests": "Run Tests",
+      "submit": "Submit Solution"
+    }
+  },
+  "errors": {
+    "notFound": "Page Not Found",
+    "notFoundDesc": "Oops! Looks like you've ventured into uncharted territory.",
+    "backHome": "Back to Home",
+    "browseCourses": "Browse Courses",
+    "walletRequired": "Wallet connection required",
+    "walletRequiredDesc": "Please connect your Solana wallet to continue",
+    "enrollmentFailed": "Enrollment failed",
+    "lessonCompletionFailed": "Failed to complete lesson"
+  }
+}

@@ -20,6 +20,8 @@
     "eventemitter3": "^5.0.4",
     "lucide-react": "^0.576.0",
     "next": "16.1.6",
+    "next-intl": "^4.8.3",
+    "posthog-js": "^1.358.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "rpc-websockets": "^9.3.5",
