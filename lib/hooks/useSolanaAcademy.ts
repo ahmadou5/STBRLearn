@@ -1,30 +1,24 @@
-'use client'
+"use client";
 
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useCallback, useEffect, useState } from "react";
-import { PublicKey, Transaction } from "@solana/web3.js";
-import { getTokenAccountBalance, createAssociatedTokenAccountInstruction } from "@solana/spl-token";
-import { 
-  getConfigPda, 
-  getCoursePda, 
-  getEnrollmentPda 
+import { PublicKey } from "@solana/web3.js";
+import {
+  getConfigPda,
+  getCoursePda,
+  getEnrollmentPda,
 } from "@/lib/solana/pdas";
-import { 
-  createEnrollInstruction, 
-  createCloseEnrollmentInstruction 
-} from "@/lib/solana/instructions";
-import { 
+
+import {
   getXpTokenAccount,
-  isLessonComplete,
   countCompletedLessons,
-  calculateProgress
+  calculateProgress,
 } from "@/lib/solana/utils";
-import { TOKEN_2022_PROGRAM_ID } from "@/lib/solana/constants";
-import { 
-  Config, 
-  Course, 
-  Enrollment, 
-  EnrollmentStatus 
+import {
+  Config,
+  Course,
+  Enrollment,
+  EnrollmentStatus,
 } from "@/lib/solana/types";
 import BN from "bn.js";
 
@@ -35,7 +29,7 @@ import BN from "bn.js";
 export function useSolanaAcademy() {
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
-  
+
   const [config, setConfig] = useState<Config | null>(null);
   const [xpBalance, setXpBalance] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -48,9 +42,11 @@ export function useSolanaAcademy() {
     try {
       const [configPda] = getConfigPda();
       const accountInfo = await connection.getAccountInfo(configPda);
-      
+
       if (!accountInfo) {
-        throw new Error("Config account not found. Program may not be initialized.");
+        throw new Error(
+          "Config account not found. Program may not be initialized.",
+        );
       }
 
       // TODO: Deserialize account data using Anchor IDL
@@ -60,7 +56,7 @@ export function useSolanaAcademy() {
         backendSigner: new PublicKey("11111111111111111111111111111111"),
         xpMint: new PublicKey("11111111111111111111111111111111"),
       };
-      
+
       setConfig(mockConfig);
       return mockConfig;
     } catch (err) {
@@ -93,40 +89,43 @@ export function useSolanaAcademy() {
   /**
    * Fetch course data by ID
    */
-  const fetchCourse = useCallback(async (courseId: string): Promise<Course | null> => {
-    try {
-      const [coursePda] = getCoursePda(courseId);
-      const accountInfo = await connection.getAccountInfo(coursePda);
-      
-      if (!accountInfo) {
+  const fetchCourse = useCallback(
+    async (courseId: string): Promise<Course | null> => {
+      try {
+        const [coursePda] = getCoursePda(courseId);
+        const accountInfo = await connection.getAccountInfo(coursePda);
+
+        if (!accountInfo) {
+          return null;
+        }
+
+        // TODO: Deserialize account data using Anchor IDL
+        // For now, return mock data
+        const mockCourse: Course = {
+          courseId,
+          creator: new PublicKey("11111111111111111111111111111111"),
+          contentTxId: new Array(32).fill(0),
+          lessonCount: 10,
+          difficulty: 1,
+          xpPerLesson: 100,
+          trackId: 1,
+          trackLevel: 1,
+          prerequisite: null,
+          creatorRewardXp: 50,
+          minCompletionsForReward: 3,
+          totalCompletions: 0,
+          isActive: true,
+          createdAt: new BN(Date.now() / 1000),
+        };
+
+        return mockCourse;
+      } catch (err) {
+        console.error("Error fetching course:", err);
         return null;
       }
-
-      // TODO: Deserialize account data using Anchor IDL
-      // For now, return mock data
-      const mockCourse: Course = {
-        courseId,
-        creator: new PublicKey("11111111111111111111111111111111"),
-        contentTxId: new Array(32).fill(0),
-        lessonCount: 10,
-        difficulty: 1,
-        xpPerLesson: 100,
-        trackId: 1,
-        trackLevel: 1,
-        prerequisite: null,
-        creatorRewardXp: 50,
-        minCompletionsForReward: 3,
-        totalCompletions: 0,
-        isActive: true,
-        createdAt: new BN(Date.now() / 1000),
-      };
-
-      return mockCourse;
-    } catch (err) {
-      console.error("Error fetching course:", err);
-      return null;
-    }
-  }, [connection]);
+    },
+    [connection],
+  );
 
   /**
    * Fetch enrollment status for a course
@@ -175,7 +174,9 @@ export function useSolanaAcademy() {
 
         const course = await fetchCourse(courseId);
         const totalLessons = course?.lessonCount || 0;
-        const completedLessons = countCompletedLessons(mockEnrollment.lessonFlags);
+        const completedLessons = countCompletedLessons(
+          mockEnrollment.lessonFlags,
+        );
         const isCompleted = mockEnrollment.completedAt !== null;
         const progress = calculateProgress(completedLessons, totalLessons);
 
@@ -184,9 +185,10 @@ export function useSolanaAcademy() {
           completedLessons,
           totalLessons,
           isCompleted,
-          completedAt: isCompleted && mockEnrollment.completedAt 
-            ? new Date(mockEnrollment.completedAt.toNumber() * 1000) 
-            : null,
+          completedAt:
+            isCompleted && mockEnrollment.completedAt
+              ? new Date(mockEnrollment.completedAt.toNumber() * 1000)
+              : null,
           credentialAsset: mockEnrollment.credentialAsset,
           progress,
         };
@@ -203,7 +205,7 @@ export function useSolanaAcademy() {
         };
       }
     },
-    [connection, publicKey, fetchCourse]
+    [connection, publicKey, fetchCourse],
   );
 
   /**
@@ -225,16 +227,19 @@ export function useSolanaAcademy() {
 
         if (prerequisiteCourseId) {
           [prerequisiteCoursePda] = getCoursePda(prerequisiteCourseId);
-          [prerequisiteEnrollmentPda] = getEnrollmentPda(prerequisiteCourseId, publicKey);
+          [prerequisiteEnrollmentPda] = getEnrollmentPda(
+            prerequisiteCourseId,
+            publicKey,
+          );
         }
 
         // TODO: Initialize Anchor program
         // const program = new Program(...);
-        
+
         // For now, throw error with instructions
         throw new Error(
           "On-chain integration requires Anchor program setup. " +
-          "See lib/hooks/useSolanaAcademy.ts for implementation details."
+            "See lib/hooks/useSolanaAcademy.ts for implementation details.",
         );
 
         // Example implementation (uncomment when program is set up):
@@ -256,14 +261,15 @@ export function useSolanaAcademy() {
         return signature;
         */
       } catch (err) {
-        const message = err instanceof Error ? err.message : "Enrollment failed";
+        const message =
+          err instanceof Error ? err.message : "Enrollment failed";
         setError(message);
         throw new Error(message);
       } finally {
         setLoading(false);
       }
     },
-    [connection, publicKey, sendTransaction]
+    [connection, publicKey, sendTransaction],
   );
 
   /**
@@ -282,7 +288,7 @@ export function useSolanaAcademy() {
         // TODO: Initialize Anchor program
         throw new Error(
           "On-chain integration requires Anchor program setup. " +
-          "See lib/hooks/useSolanaAcademy.ts for implementation details."
+            "See lib/hooks/useSolanaAcademy.ts for implementation details.",
         );
 
         // Example implementation:
@@ -300,14 +306,15 @@ export function useSolanaAcademy() {
         return signature;
         */
       } catch (err) {
-        const message = err instanceof Error ? err.message : "Close enrollment failed";
+        const message =
+          err instanceof Error ? err.message : "Close enrollment failed";
         setError(message);
         throw new Error(message);
       } finally {
         setLoading(false);
       }
     },
-    [connection, publicKey, sendTransaction]
+    [connection, publicKey, sendTransaction],
   );
 
   /**
@@ -359,11 +366,11 @@ export function useSolanaAcademy() {
     xpBalance,
     loading,
     error,
-    
+
     // Learner actions (wallet-signed)
     enroll,
     closeEnrollment,
-    
+
     // Read functions
     fetchCourse,
     fetchEnrollmentStatus,
