@@ -1,3 +1,5 @@
+'use client'
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -5,8 +7,30 @@ import { Progress } from "@/components/ui/progress"
 import { Clock, BookOpen, Award } from "lucide-react"
 import Link from "next/link"
 import { mockCourses } from "@/lib/mock-data"
+import { useSolanaAcademy } from "@/lib/hooks/useSolanaAcademy"
+import { useEffect, useState } from "react"
+import { EnrollmentStatus } from "@/lib/solana/types"
 
 export default function CoursesPage() {
+  const { fetchEnrollmentStatus } = useSolanaAcademy()
+  const [enrollments, setEnrollments] = useState<Record<string, EnrollmentStatus>>({})
+  
+  // Fetch enrollment status for all courses
+  useEffect(() => {
+    async function loadEnrollments() {
+      const statuses: Record<string, EnrollmentStatus> = {}
+      
+      for (const course of mockCourses) {
+        const status = await fetchEnrollmentStatus(course.slug)
+        statuses[course.slug] = status
+      }
+      
+      setEnrollments(statuses)
+    }
+    
+    loadEnrollments()
+  }, [fetchEnrollmentStatus])
+  
   const courses = mockCourses
 
   return (
@@ -62,13 +86,15 @@ export default function CoursesPage() {
                 </div>
               </div>
 
-              {course.progress !== undefined && course.progress > 0 && (
+              {enrollments[course.slug]?.enrolled && (
                 <div className="mt-4">
                   <div className="flex justify-between text-sm mb-2">
                     <span className="text-muted-foreground">Progress</span>
-                    <span className="font-medium">{course.progress}%</span>
+                    <span className="font-medium">
+                      {enrollments[course.slug].completedLessons}/{enrollments[course.slug].totalLessons} lessons
+                    </span>
                   </div>
-                  <Progress value={course.progress} />
+                  <Progress value={enrollments[course.slug].progress} />
                 </div>
               )}
             </CardContent>
@@ -76,7 +102,7 @@ export default function CoursesPage() {
             <CardFooter>
               <Link href={`/courses/${course.slug}`} className="w-full">
                 <Button className="w-full">
-                  {course.enrolled ? "Continue Learning" : "View Course"}
+                  {enrollments[course.slug]?.enrolled ? "Continue Learning" : "View Course"}
                 </Button>
               </Link>
             </CardFooter>

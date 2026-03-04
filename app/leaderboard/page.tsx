@@ -5,6 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Trophy, Medal, Award, TrendingUp } from "lucide-react"
+import { useSolanaAcademy } from "@/lib/hooks/useSolanaAcademy"
+import { formatXp } from "@/lib/solana/utils"
+import { calculateLevel } from "@/lib/utils"
+import { useWallet } from "@solana/wallet-adapter-react"
 
 const mockLeaderboard = [
   { rank: 1, username: "SolanaDevMaster", xp: 15420, level: 12, streak: 45, avatar: "🥇" },
@@ -21,6 +25,19 @@ const mockLeaderboard = [
 
 export default function LeaderboardPage() {
   const [timeframe, setTimeframe] = useState<"weekly" | "monthly" | "all-time">("all-time")
+  const { xpBalance } = useSolanaAcademy()
+  const { publicKey } = useWallet()
+  
+  // Add current user to leaderboard if connected
+  const userEntry = publicKey ? {
+    rank: 0, // Will be calculated based on XP
+    username: publicKey.toBase58().slice(0, 8) + "...",
+    xp: xpBalance,
+    level: calculateLevel(xpBalance),
+    streak: 0, // TODO: Get from backend
+    avatar: "👤",
+    isCurrentUser: true,
+  } : null
 
   return (
     <div className="container mx-auto px-4 py-12">

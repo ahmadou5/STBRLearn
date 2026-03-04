@@ -10,9 +10,36 @@ import { Trophy, Flame, Award, TrendingUp, BookOpen, Target } from "lucide-react
 import Link from "next/link"
 import { mockCourses, mockAchievements } from "@/lib/mock-data"
 import { calculateLevel, getLevelProgress } from "@/lib/utils"
+import { useSolanaAcademy } from "@/lib/hooks/useSolanaAcademy"
+import { formatXp } from "@/lib/solana/utils"
+import { useEffect, useState } from "react"
+import { EnrollmentStatus } from "@/lib/solana/types"
 
 export default function DashboardPage() {
   const { connected, publicKey } = useWallet()
+  const { xpBalance, fetchMyEnrollments, fetchEnrollmentStatus } = useSolanaAcademy()
+  const [enrollments, setEnrollments] = useState<Record<string, EnrollmentStatus>>({})
+
+  // Fetch enrollments when wallet connects
+  useEffect(() => {
+    if (!connected) return
+
+    async function loadEnrollments() {
+      const statuses: Record<string, EnrollmentStatus> = {}
+      
+      // Get enrollments for courses in progress
+      for (const course of mockCourses.slice(0, 3)) {
+        const status = await fetchEnrollmentStatus(course.slug)
+        if (status.enrolled) {
+          statuses[course.slug] = status
+        }
+      }
+      
+      setEnrollments(statuses)
+    }
+    
+    loadEnrollments()
+  }, [connected, fetchEnrollmentStatus])
 
   if (!connected) {
     return (
@@ -31,12 +58,14 @@ export default function DashboardPage() {
     )
   }
 
-  // Mock user data - replace with actual data from service
-  const userXP = 1250
+  // Use on-chain XP balance
+  const userXP = xpBalance
   const userLevel = calculateLevel(userXP)
   const levelProgress = getLevelProgress(userXP)
-  const currentStreak = 5
-  const coursesInProgress = mockCourses.slice(0, 2)
+  const currentStreak = 5 // TODO: Get from on-chain or backend
+  
+  // Get courses with enrollment status
+  const coursesInProgress = mockCourses.filter(course => enrollments[course.slug]?.enrolled)
   const unlockedAchievements = mockAchievements.filter(a => a.unlockedAt)
 
   return (

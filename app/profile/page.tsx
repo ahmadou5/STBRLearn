@@ -9,9 +9,33 @@ import { Progress } from "@/components/ui/progress"
 import { Trophy, Award, Calendar, ExternalLink, CheckCircle2 } from "lucide-react"
 import { mockAchievements, mockCourses } from "@/lib/mock-data"
 import { calculateLevel, getLevelProgress } from "@/lib/utils"
+import { useSolanaAcademy } from "@/lib/hooks/useSolanaAcademy"
+import { formatXp } from "@/lib/solana/utils"
+import { useEffect, useState } from "react"
+import { EnrollmentStatus } from "@/lib/solana/types"
 
 export default function ProfilePage() {
   const { connected, publicKey } = useWallet()
+  const { xpBalance, fetchEnrollmentStatus } = useSolanaAcademy()
+  const [enrollments, setEnrollments] = useState<Record<string, EnrollmentStatus>>({})
+
+  // Fetch enrollments when wallet connects
+  useEffect(() => {
+    if (!connected) return
+
+    async function loadEnrollments() {
+      const statuses: Record<string, EnrollmentStatus> = {}
+      
+      for (const course of mockCourses) {
+        const status = await fetchEnrollmentStatus(course.slug)
+        statuses[course.slug] = status
+      }
+      
+      setEnrollments(statuses)
+    }
+    
+    loadEnrollments()
+  }, [connected, fetchEnrollmentStatus])
 
   if (!connected) {
     return (
@@ -27,10 +51,10 @@ export default function ProfilePage() {
     )
   }
 
-  const userXP = 1250
+  const userXP = xpBalance
   const userLevel = calculateLevel(userXP)
   const levelProgress = getLevelProgress(userXP)
-  const completedCourses = mockCourses.slice(0, 1)
+  const completedCourses = mockCourses.filter(course => enrollments[course.slug]?.isCompleted)
   const unlockedAchievements = mockAchievements.filter(a => a.unlockedAt)
 
   return (
